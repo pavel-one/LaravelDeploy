@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RSA_DIR="/home/root/.ssh/id_rsa"
+RSA_DIR="/root/.ssh/id_rsa"
 
 cat $RSA_DIR
 
