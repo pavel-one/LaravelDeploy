@@ -5,6 +5,8 @@
 #INPUT_HOST="pavel.one"
 #INPUT_DIR="~/www/Quiz/"
 
+echo "Конфигурирую SSH"
+
 mkdir -p ~/.ssh/
 touch ~/.ssh/config
 
@@ -12,5 +14,7 @@ echo -e "Host *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
 echo "${INPUT_KEY}" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
+
+echo "Произвожу настройку"
 
 ssh ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} && bash bin/user.sh"
