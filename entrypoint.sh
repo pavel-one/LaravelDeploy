@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 echo "🔑 Добавляю SSH ключ..." &&
 eval $(ssh-agent -s) &&
