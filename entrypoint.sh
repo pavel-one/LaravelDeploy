@@ -1,7 +1,16 @@
 #!/bin/bash
 
-mkdir -p ~/.ssh/
-echo "$INPUT_KEY" > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/private.key
+#INPUT_KEY=$(cat /test.key)
+#INPUT_USER="pavel"
+#INPUT_HOST="pavel.one"
+#INPUT_DIR="~/www/Quiz/"
 
-ssh -o "StrictHostKeyChecking=no" ${INPUT_USER}@${INPUT_HOST} "bash ${INPUT_DIR}bin/user.sh"
+mkdir -p ~/.ssh/
+touch ~/.ssh/config
+
+echo -e "Host *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
+echo "${INPUT_KEY}" > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+
+ssh ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} && bash bin/user.sh"
