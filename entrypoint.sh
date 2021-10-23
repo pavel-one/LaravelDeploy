@@ -1,7 +1,8 @@
 #!/bin/bash
 
 RSA_DIR="${HOME}/.ssh/id_rsa"
-#INPUT_KEY
+
+cat RSA_DIR
 
 echo "🔑 Добавляю SSH ключ..."
 touch $RSA_DIR
