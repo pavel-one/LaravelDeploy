@@ -17,10 +17,10 @@ ssh -o UserKnownHostsFile=/dev/null \
     -o LogLevel=quiet \
     -i ~/.ssh/id_rsa \
     ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} \
-    && bash bin/user.sh \
-    && git pull \
-    && make down \
-    && make up \
-    && docker-compose exec app composer install \
-    && docker-compose exec app php artisan key:generate
-    && php artisan migrate --force"
+    bash bin/user.sh \
+    git pull \
+    make down \
+    make up \
+    docker-compose exec app composer install \
+    docker-compose exec app php artisan key:generate
+    php artisan migrate --force"
