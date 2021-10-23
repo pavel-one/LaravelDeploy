@@ -15,6 +15,10 @@ echo -e "Host *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 echo "${INPUT_KEY}" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
-echo "Произвожу настройку"
+echo "Произвожу деплой"
 
-ssh ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} && bash bin/user.sh"
+ssh -o UserKnownHostsFile=/dev/null \
+    -o StrictHostKeyChecking=no \
+    -o LogLevel=quiet \
+    -i ~/.ssh/id_rsa \
+    ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} && bash bin/user.sh"
