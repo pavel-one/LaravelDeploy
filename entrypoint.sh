@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#INPUT_KEY=$(cat /test.key)
-#INPUT_USER="pavel"
-#INPUT_HOST="pavel.one"
-#INPUT_DIR="~/www/Quiz/"
-
 echo "Конфигурирую SSH"
 
 mkdir -p ~/.ssh/
@@ -21,4 +16,11 @@ ssh -o UserKnownHostsFile=/dev/null \
     -o StrictHostKeyChecking=no \
     -o LogLevel=quiet \
     -i ~/.ssh/id_rsa \
-    ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} && bash bin/user.sh"
+    ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR} \
+    && bash bin/user.sh \
+    && git pull \
+    && make down \
+    && make up \
+    && docker-compose exec app composer install \
+    && docker-compose exec app php artisan key:generate
+    && php artisan migrate --force"

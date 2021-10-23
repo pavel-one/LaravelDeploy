@@ -8,7 +8,6 @@ RUN  apk update && \
 
 
 COPY entrypoint.sh /
-#COPY test.key /
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
