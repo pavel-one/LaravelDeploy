@@ -15,6 +15,10 @@ inputs:
     description: 'Remote server private key'
     required: true
 
+  dir:
+    description: 'Directory on the server'
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
