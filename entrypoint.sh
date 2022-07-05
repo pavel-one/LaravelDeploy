@@ -21,6 +21,6 @@ ssh -o UserKnownHostsFile=/dev/null \
     git pull; \
     bash bin/user.sh; \
     make up; \
-    docker-compose exec -T app composer install --no-dev; \
+    docker-compose exec -T app composer install; \
     docker-compose exec -T app php artisan key:generate;
     docker-compose exec -T app php artisan migrate --force;"
