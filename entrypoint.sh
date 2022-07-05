@@ -17,9 +17,9 @@ ssh -o UserKnownHostsFile=/dev/null \
     -o LogLevel=quiet \
     -i ~/.ssh/id_rsa \
     ${INPUT_USER}@${INPUT_HOST} "cd ${INPUT_DIR}; \
-    bash bin/user.sh; \
-    git pull; \
     make down; \
+    git pull; \
+    bash bin/user.sh; \
     make up; \
     docker-compose exec -T app composer install --no-dev; \
     docker-compose exec -T app php artisan key:generate;
